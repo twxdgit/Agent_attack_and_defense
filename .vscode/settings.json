@@ -1,0 +1,6 @@
+{
+  "typescript.tsdk": "frontend/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "vue.features.codeActions.enable": true,
+  "vue.inlayHints.eventStyleArguments": false
+}

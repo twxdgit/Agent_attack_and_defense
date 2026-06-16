@@ -7,6 +7,10 @@ networkx>=3.0
 numpy>=1.24.0
 pandas>=2.0.0
 
+# Web API 服务
+flask>=3.0.0
+flask-cors>=4.0.0
+
 # 可视化
 matplotlib>=3.7.0
 plotly>=5.15.0

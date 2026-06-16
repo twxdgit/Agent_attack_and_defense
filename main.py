@@ -7,6 +7,8 @@ import argparse
 import logging
 import sys
 import os
+from datetime import datetime
+from pathlib import Path
 
 # 添加项目根目录到路径
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -17,10 +19,25 @@ from scripts.load_facebook_data import FacebookDataLoader, print_statistics
 from config.model_config import ModelProvider
 from metrics.visualizer import GameVisualizer
 
-# 配置日志
+# 创建日志目录
+LOG_DIR = Path("data/logs")
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+# 生成唯一运行ID
+RUN_ID = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+# 配置日志 - 同时输出到终端和文件
+log_file = LOG_DIR / f"experiment_{RUN_ID}.log"
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
+file_handler.setLevel(logging.INFO)
+
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[console_handler, file_handler]
 )
 logger = logging.getLogger(__name__)
 
@@ -111,10 +128,10 @@ def run_with_synthetic_network(args):
     print("\n" + "=" * 60)
     print("合成网络攻防博弈实验")
     print("=" * 60 + "\n")
-    
+
     # 创建任务节点
     task_nodes = create_all_task_nodes()
-    
+
     # 创建博弈引擎
     engine = GameEngine(
         num_nodes=args.nodes,
@@ -129,9 +146,10 @@ def run_with_synthetic_network(args):
         network_type=args.network_type,
         task_nodes=task_nodes,
         verbose=args.verbose,
-        save_results=args.save_results
+        save_results=args.save_results,
+        run_id=RUN_ID  # 传递运行ID
     )
-    
+
     return engine.run()
 
 
@@ -139,6 +157,7 @@ def main():
     """主函数"""
     args = parse_args()
     
+    print(f"\n[运行ID: {RUN_ID}]")
     print("\n实验配置：")
     print(f"  博弈轮次: {args.rounds}")
     print(f"  节点数量: {args.nodes}")
@@ -146,6 +165,9 @@ def main():
     print(f"  使用LLM: {args.use_llm}")
     print(f"  攻击限制: 每轮{args.max_attacks}条链路")
     print(f"  防御限制: 每轮修复{args.max_repairs}条+新增{args.max_new_edges}条")
+    
+    logger.info(f"实验开始 - 运行ID: {RUN_ID}")
+    logger.info(f"配置: rounds={args.rounds}, nodes={args.nodes}, network={args.network_type}")
     
     # 运行实验
     try:
@@ -163,23 +185,30 @@ def main():
         print(f"  最终链路数: {result.final_network_state.get('num_edges', 0)}")
         print(f"  最终连通分量: {result.final_network_state.get('largest_cc_size', 0)}")
         
-        # 保存可视化
+        # 保存可视化 - 使用唯一文件名
         if args.save_plot:
             visualizer = GameVisualizer()
+            plot_path = f"data/results/metrics_{RUN_ID}.png"
             visualizer.plot_metrics_overview(
                 result.metrics_curves,
-                save_path=f"data/results/metrics_{result.winner}_{result.total_rounds}rounds.png"
+                save_path=plot_path
             )
         
         print("\n实验完成！")
+        logger.info(f"实验完成 - 胜负: {result.winner}, 轮次: {result.total_rounds}")
+        
+        # 打印日志保存位置
+        print(f"\n日志已保存至: {log_file}")
         
     except KeyboardInterrupt:
         print("\n\n实验被用户中断")
+        logger.warning("实验被用户中断")
         sys.exit(0)
     except Exception as e:
         logger.error(f"实验运行出错: {e}")
         import traceback
         traceback.print_exc()
+        logger.error(traceback.format_exc())
         sys.exit(1)
 
 

@@ -146,17 +146,16 @@ class DefenderAgent(BaseGameAgent):
         if use_llm is None:
             use_llm = self.use_llm
         
-        active_edges = set(network_state.get("edges", []))
-        active_edges_tuples = set(tuple(sorted(e)) for e in active_edges)
+        active_edges = set(tuple(sorted(e)) for e in network_state.get("edges", []))
         critical_nodes = network_state.get("critical_nodes", [])
         attack_history = self.memory.get_recent(10)
-        
+
         actions = {"repairs": [], "new_edges": []}
-        
-        # 1. 修复被攻击过的初始链路
+
+        # 1. 修复被攻击过的初始链路（统一转字符串避免 (0,1) vs ('0','1') 不匹配）
         for edge in initial_edges:
-            sorted_edge = tuple(sorted(edge))
-            if sorted_edge not in active_edges_tuples and len(actions["repairs"]) < self.max_repairs_per_round:
+            sorted_edge = tuple(sorted([str(n) for n in edge]))
+            if sorted_edge not in active_edges and len(actions["repairs"]) < self.max_repairs_per_round:
                 actions["repairs"].append(sorted_edge)
         
         # 2. 如果需要增加新链路

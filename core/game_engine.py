@@ -89,7 +89,8 @@ class GameEngine:
         defender: Optional[DefenderAgent] = None,
         seed: int = 42,
         verbose: bool = True,
-        save_results: bool = True
+        save_results: bool = True,
+        run_id: str = None
     ):
         """
         初始化博弈引擎
@@ -105,11 +106,18 @@ class GameEngine:
         self.use_llm_defender = use_llm_defender
         self.verbose = verbose
         self.save_results = save_results
-        
+
+        # 获取运行ID（用于唯一标识）
+        self.run_id = run_id or os.environ.get('RUN_ID', datetime.now().strftime("%Y%m%d_%H%M%S"))
+
         # 设置随机种子
         if seed is not None:
             random.seed(seed)
-        
+
+        # 创建唯一的帧保存目录
+        frames_dir = f"data/results/frames_{self.run_id}"
+        self.visualizer = GameVisualizer(save_dir=frames_dir)
+
         # 初始化组件
         self.network = NetworkManager(
             num_nodes=num_nodes,
@@ -118,8 +126,7 @@ class GameEngine:
             seed=seed
         )
         self.metrics_calculator = RobustnessMetrics()
-        self.visualizer = GameVisualizer()
-        
+
         # 初始化智能体
         if attacker:
             self.attacker = attacker
@@ -188,7 +195,7 @@ class GameEngine:
         """执行单轮博弈"""
         self.log("-" * 40)
         self.log(f"第 {self.current_round} 轮开始")
-        
+
         # === 阶段1：攻击阶段 ===
         self.log(">>> 攻击阶段")
         network_state = self.network.get_network_info()
@@ -198,17 +205,17 @@ class GameEngine:
         )
         attack_result = self.attacker.execute_attack(attack_targets, self.network)
         self.log(f"    攻击目标: {attack_result['attacked_edges']}")
-        
+
         # === 阶段2：状态检测 ===
         network_state = self.network.get_network_info()
         is_paralyzed = self.network.is_network_paralyzed(self.paralysis_threshold)
-        
+
         if is_paralyzed:
             self.paralysis_count += 1
             self.log(f"    ⚠ 网络瘫痪（连续第{self.paralysis_count}轮）")
         else:
             self.paralysis_count = 0
-        
+
         # === 阶段3：防御阶段 ===
         self.log(">>> 防御阶段")
         defense_actions = self.defender.decide_defense_actions(
@@ -219,7 +226,7 @@ class GameEngine:
         defense_result = self.defender.execute_defense(defense_actions, self.network)
         self.log(f"    修复链路: {defense_result['repairs']}")
         self.log(f"    新增链路: {defense_result['new_edges']}")
-        
+
         # === 阶段4：记录状态 ===
         self._record_round(
             attack_targets=attack_result['attacked_edges'],
@@ -227,7 +234,7 @@ class GameEngine:
             repair_targets=defense_result['repairs'],
             new_edges=defense_result['new_edges']
         )
-        
+
         # === 阶段5：可视化更新 ===
         self.visualizer.update(
             self.network,
@@ -236,11 +243,72 @@ class GameEngine:
             defense_result['repairs'],
             defense_result['new_edges']
         )
-        
+
         # === 输出状态 ===
         final_network_state = self.network.get_network_info()
         self.log(f"    当前链路数: {final_network_state['num_edges']}")
         self.log(f"    最大连通分量: {final_network_state['largest_cc_size']} 节点")
+
+    def execute_round(self) -> Dict[str, Any]:
+        """
+        执行单轮博弈（供外部调用）
+
+        Returns:
+            包含攻击、防御结果的字典
+        """
+        # 如果还没开始，先初始化
+        if self.current_round == 0:
+            self._record_round(is_initial=True)
+
+        self.current_round += 1
+
+        # === 攻击阶段 ===
+        network_state = self.network.get_network_info()
+        attack_targets = self.attacker.decide_attack_targets(
+            network_state,
+            use_llm=self.use_llm_attacker
+        )
+        attack_result = self.attacker.execute_attack(attack_targets, self.network)
+
+        # === 状态检测 ===
+        is_paralyzed = self.network.is_network_paralyzed(self.paralysis_threshold)
+        if is_paralyzed:
+            self.paralysis_count += 1
+        else:
+            self.paralysis_count = 0
+
+        # === 防御阶段 ===
+        # ⚠ 必须在攻击后重新获取网络状态，否则防御者使用的是攻击前的旧快照！
+        # 这会导致防御者"看不到"被攻击的边，无法正确判断哪些边需要修复。
+        network_state_after_attack = self.network.get_network_info()
+        defense_actions = self.defender.decide_defense_actions(
+            network_state_after_attack,
+            self.initial_edges,
+            use_llm=self.use_llm_defender
+        )
+        defense_result = self.defender.execute_defense(defense_actions, self.network)
+
+        # === 记录状态 ===
+        self._record_round(
+            attack_targets=attack_result['attacked_edges'],
+            attack_success=len(attack_result['attacked_edges']) > 0,
+            repair_targets=defense_result['repairs'],
+            new_edges=defense_result['new_edges']
+        )
+
+        # === 检查终止条件 ===
+        self._check_termination()
+
+        # === 返回结果 ===
+        return {
+            "attacked_edges": attack_result['attacked_edges'],
+            "repaired_edges": defense_result['repairs'],
+            "new_edges": defense_result['new_edges'],
+            "game_over": self.game_over,
+            "winner": self.winner,
+            "is_paralyzed": is_paralyzed,
+            "paralysis_count": self.paralysis_count
+        }
     
     def _record_round(
         self,
@@ -333,13 +401,12 @@ class GameEngine:
     def _save_results(self, result: GameResult):
         """保存实验结果"""
         os.makedirs("data/results", exist_ok=True)
-        
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"data/results/game_result_{timestamp}.json"
-        
+
+        filename = f"data/results/game_result_{self.run_id}.json"
+
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(result.to_dict(), f, indent=2, ensure_ascii=False)
-        
+
         logger.info(f"结果已保存: {filename}")
     
     def get_metrics_over_time(self) -> Dict[str, List]:

@@ -58,7 +58,7 @@ class BaselineDefender:
         
         # 1. 修复初始链路（优先）
         for edge in initial_edges:
-            sorted_edge = tuple(sorted(edge))
+            sorted_edge = tuple(sorted([str(u) for u in edge]))
             if sorted_edge not in active_edges and len(actions["repairs"]) < self.max_repairs:
                 actions["repairs"].append(sorted_edge)
         
@@ -74,7 +74,7 @@ class BaselineDefender:
                 import random
                 for _ in range(new_edge_slots):
                     u, v = random.sample(nodes, 2)
-                    edge = tuple(sorted([u, v]))
+                    edge = tuple(sorted([str(u), str(v)]))
                     if edge not in active_edges and edge not in actions["new_edges"]:
                         actions["new_edges"].append(edge)
         

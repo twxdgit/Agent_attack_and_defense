@@ -73,8 +73,8 @@ class NetworkManager:
         else:
             self.graph = self._build_initial_network()
         
-        # 保存初始状态
-        self.initial_edges = list(self.graph.edges())
+        # 保存初始状态（统一转为字符串元组，避免 (0,1) vs ('0','1') 不匹配）
+        self.initial_edges = [(str(u), str(v)) for u, v in self.graph.edges()]
         
         # 历史记录
         self.state_history: List[NetworkState] = []
@@ -164,40 +164,44 @@ class NetworkManager:
     def remove_edge(self, u: str, v: str) -> bool:
         """
         移除链路
-        
+
         Args:
-            u, v: 链路两端节点
-            
+            u, v: 链路两端节点（字符串或整数）
+
         Returns:
             是否成功移除
         """
         try:
-            u, v = str(u), str(v)
-            if self.graph.has_edge(u, v):
-                self.graph.remove_edge(u, v)
-                logger.debug(f"移除链路: {u} <--> {v}")
+            # NetworkX 使用整数节点ID，需转换；外部接口统一用字符串
+            u_int = int(u)
+            v_int = int(v)
+            if self.graph.has_edge(u_int, v_int):
+                self.graph.remove_edge(u_int, v_int)
+                logger.debug(f"移除链路: {u_int} <--> {v_int}")
                 return True
-        except nx.NetworkXError:
+        except (ValueError, nx.NetworkXError):
             pass
         return False
-    
+
     def add_edge(self, u: str, v: str) -> bool:
         """
         添加链路
-        
+
         Args:
-            u, v: 链路两端节点
-            
+            u, v: 链路两端节点（字符串或整数）
+
         Returns:
             是否成功添加
         """
         try:
-            u, v = str(u), str(v)
-            if not self.graph.has_edge(u, v) and u != v:
-                self.graph.add_edge(u, v)
-                logger.debug(f"添加链路: {u} <--> {v}")
+            # NetworkX 使用整数节点ID，需转换；外部接口统一用字符串
+            u_int = int(u)
+            v_int = int(v)
+            if not self.graph.has_edge(u_int, v_int) and u_int != v_int:
+                self.graph.add_edge(u_int, v_int)
+                logger.debug(f"添加链路: {u_int} <--> {v_int}")
                 return True
-        except nx.NetworkXError:
+        except (ValueError, nx.NetworkXError):
             pass
         return False
     

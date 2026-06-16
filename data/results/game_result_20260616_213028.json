@@ -1,0 +1,729 @@
+{
+  "winner": "Defender",
+  "total_rounds": 5,
+  "final_network_state": {
+    "num_nodes": 8,
+    "num_edges": 12,
+    "edges": [
+      [
+        "0",
+        "5"
+      ],
+      [
+        "0",
+        "6"
+      ],
+      [
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "7"
+      ],
+      [
+        "0",
+        "3"
+      ],
+      [
+        "0",
+        "2"
+      ],
+      [
+        "1",
+        "3"
+      ],
+      [
+        "1",
+        "6"
+      ],
+      [
+        "2",
+        "7"
+      ],
+      [
+        "2",
+        "6"
+      ],
+      [
+        "3",
+        "4"
+      ],
+      [
+        "3",
+        "5"
+      ]
+    ],
+    "nodes": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "is_connected": true,
+    "num_components": 1,
+    "largest_cc_size": 8
+  },
+  "metrics_curves": {
+    "num_edges": [
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0
+    ],
+    "largest_cc_ratio": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "avg_path_length": [
+      2.2142857142857144,
+      2.0357142857142856,
+      1.8571428571428572,
+      1.7857142857142858,
+      1.7142857142857142,
+      1.6785714285714286
+    ],
+    "clustering_coeff": [
+      0.0,
+      0.17916666666666667,
+      0.35,
+      0.525,
+      0.6583333333333333,
+      0.5833333333333333
+    ],
+    "robustness_index": [
+      0.6660714285714284,
+      0.7135119047619048,
+      0.7592857142857142,
+      0.8014285714285714,
+      0.8352380952380952,
+      0.825595238095238
+    ]
+  },
+  "rounds_data": [
+    {
+      "round": 0,
+      "metrics": {
+        "num_nodes": 8.0,
+        "num_edges": 7.0,
+        "largest_cc_size": 8.0,
+        "largest_cc_ratio": 1.0,
+        "avg_degree": 1.75,
+        "degree_variance": 1.1875,
+        "clustering_coeff": 0.0,
+        "avg_path_length": 2.2142857142857144,
+        "diameter": 4.0,
+        "degree_centralization": 0.42857142857142855,
+        "betweenness_centralization": 0.2312925170068027,
+        "efficiency": 0.5535714285714283,
+        "robustness_index": 0.6660714285714284
+      },
+      "network_state": {
+        "num_nodes": 8,
+        "num_edges": 7,
+        "edges": [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "2"
+          ],
+          [
+            "0",
+            "3"
+          ],
+          [
+            "0",
+            "5"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "2",
+            "7"
+          ],
+          [
+            "3",
+            "4"
+          ]
+        ],
+        "nodes": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "is_connected": true,
+        "num_components": 1,
+        "largest_cc_size": 8
+      }
+    },
+    {
+      "round": 1,
+      "metrics": {
+        "num_nodes": 8.0,
+        "num_edges": 8.0,
+        "largest_cc_size": 8.0,
+        "largest_cc_ratio": 1.0,
+        "avg_degree": 2.0,
+        "degree_variance": 1.75,
+        "clustering_coeff": 0.17916666666666667,
+        "avg_path_length": 2.0357142857142856,
+        "diameter": 4.0,
+        "degree_centralization": 0.5714285714285713,
+        "betweenness_centralization": 0.24263038548752833,
+        "efficiency": 0.5922619047619048,
+        "robustness_index": 0.7135119047619048
+      },
+      "network_state": {
+        "num_nodes": 8,
+        "num_edges": 8,
+        "edges": [
+          [
+            "0",
+            "2"
+          ],
+          [
+            "0",
+            "3"
+          ],
+          [
+            "0",
+            "5"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "6"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "2",
+            "7"
+          ],
+          [
+            "3",
+            "4"
+          ]
+        ],
+        "nodes": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "is_connected": true,
+        "num_components": 1,
+        "largest_cc_size": 8
+      }
+    },
+    {
+      "round": 2,
+      "metrics": {
+        "num_nodes": 8.0,
+        "num_edges": 9.0,
+        "largest_cc_size": 8.0,
+        "largest_cc_ratio": 1.0,
+        "avg_degree": 2.25,
+        "degree_variance": 2.4375,
+        "clustering_coeff": 0.35,
+        "avg_path_length": 1.8571428571428572,
+        "diameter": 3.0,
+        "degree_centralization": 0.7142857142857141,
+        "betweenness_centralization": 0.26303854875283444,
+        "efficiency": 0.6309523809523808,
+        "robustness_index": 0.7592857142857142
+      },
+      "network_state": {
+        "num_nodes": 8,
+        "num_edges": 9,
+        "edges": [
+          [
+            "0",
+            "2"
+          ],
+          [
+            "0",
+            "3"
+          ],
+          [
+            "0",
+            "5"
+          ],
+          [
+            "0",
+            "6"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "7"
+          ],
+          [
+            "2",
+            "7"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "3",
+            "4"
+          ]
+        ],
+        "nodes": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "is_connected": true,
+        "num_components": 1,
+        "largest_cc_size": 8
+      }
+    },
+    {
+      "round": 3,
+      "metrics": {
+        "num_nodes": 8.0,
+        "num_edges": 10.0,
+        "largest_cc_size": 8.0,
+        "largest_cc_ratio": 1.0,
+        "avg_degree": 2.5,
+        "degree_variance": 2.25,
+        "clustering_coeff": 0.525,
+        "avg_path_length": 1.7857142857142858,
+        "diameter": 3.0,
+        "degree_centralization": 0.6666666666666665,
+        "betweenness_centralization": 0.2312925170068027,
+        "efficiency": 0.6547619047619048,
+        "robustness_index": 0.8014285714285714
+      },
+      "network_state": {
+        "num_nodes": 8,
+        "num_edges": 10,
+        "edges": [
+          [
+            "0",
+            "2"
+          ],
+          [
+            "0",
+            "5"
+          ],
+          [
+            "0",
+            "6"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "7"
+          ],
+          [
+            "0",
+            "3"
+          ],
+          [
+            "1",
+            "3"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "2",
+            "7"
+          ],
+          [
+            "3",
+            "4"
+          ]
+        ],
+        "nodes": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "is_connected": true,
+        "num_components": 1,
+        "largest_cc_size": 8
+      }
+    },
+    {
+      "round": 4,
+      "metrics": {
+        "num_nodes": 8.0,
+        "num_edges": 11.0,
+        "largest_cc_size": 8.0,
+        "largest_cc_ratio": 1.0,
+        "avg_degree": 2.75,
+        "degree_variance": 2.1875,
+        "clustering_coeff": 0.6583333333333333,
+        "avg_path_length": 1.7142857142857142,
+        "diameter": 3.0,
+        "degree_centralization": 0.619047619047619,
+        "betweenness_centralization": 0.19047619047619047,
+        "efficiency": 0.6785714285714286,
+        "robustness_index": 0.8352380952380952
+      },
+      "network_state": {
+        "num_nodes": 8,
+        "num_edges": 11,
+        "edges": [
+          [
+            "0",
+            "5"
+          ],
+          [
+            "0",
+            "6"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "7"
+          ],
+          [
+            "0",
+            "3"
+          ],
+          [
+            "0",
+            "2"
+          ],
+          [
+            "1",
+            "3"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "2",
+            "7"
+          ],
+          [
+            "3",
+            "4"
+          ],
+          [
+            "3",
+            "5"
+          ]
+        ],
+        "nodes": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "is_connected": true,
+        "num_components": 1,
+        "largest_cc_size": 8
+      }
+    },
+    {
+      "round": 5,
+      "metrics": {
+        "num_nodes": 8.0,
+        "num_edges": 12.0,
+        "largest_cc_size": 8.0,
+        "largest_cc_ratio": 1.0,
+        "avg_degree": 3.0,
+        "degree_variance": 2.0,
+        "clustering_coeff": 0.5833333333333333,
+        "avg_path_length": 1.6785714285714286,
+        "diameter": 3.0,
+        "degree_centralization": 0.5714285714285713,
+        "betweenness_centralization": 0.14739229024943312,
+        "efficiency": 0.6964285714285714,
+        "robustness_index": 0.825595238095238
+      },
+      "network_state": {
+        "num_nodes": 8,
+        "num_edges": 12,
+        "edges": [
+          [
+            "0",
+            "5"
+          ],
+          [
+            "0",
+            "6"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "7"
+          ],
+          [
+            "0",
+            "3"
+          ],
+          [
+            "0",
+            "2"
+          ],
+          [
+            "1",
+            "3"
+          ],
+          [
+            "1",
+            "6"
+          ],
+          [
+            "2",
+            "7"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "3",
+            "4"
+          ],
+          [
+            "3",
+            "5"
+          ]
+        ],
+        "nodes": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "is_connected": true,
+        "num_components": 1,
+        "largest_cc_size": 8
+      }
+    }
+  ],
+  "attack_history": [
+    {
+      "round": 1,
+      "targets": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "2",
+          "7"
+        ]
+      ]
+    },
+    {
+      "round": 2,
+      "targets": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "2",
+          "6"
+        ]
+      ]
+    },
+    {
+      "round": 3,
+      "targets": [
+        [
+          "2",
+          "7"
+        ],
+        [
+          "0",
+          "3"
+        ]
+      ]
+    },
+    {
+      "round": 4,
+      "targets": [
+        [
+          "2",
+          "7"
+        ],
+        [
+          "0",
+          "2"
+        ]
+      ]
+    },
+    {
+      "round": 5,
+      "targets": [
+        [
+          "2",
+          "6"
+        ],
+        [
+          "2",
+          "7"
+        ]
+      ]
+    }
+  ],
+  "defense_history": [
+    {
+      "round": 1,
+      "repairs": [
+        [
+          "2",
+          "7"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "new_edges": [
+        [
+          "0",
+          "6"
+        ]
+      ]
+    },
+    {
+      "round": 2,
+      "repairs": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "2",
+          "6"
+        ]
+      ],
+      "new_edges": [
+        [
+          "0",
+          "7"
+        ]
+      ]
+    },
+    {
+      "round": 3,
+      "repairs": [
+        [
+          "2",
+          "7"
+        ],
+        [
+          "0",
+          "3"
+        ]
+      ],
+      "new_edges": [
+        [
+          "1",
+          "3"
+        ]
+      ]
+    },
+    {
+      "round": 4,
+      "repairs": [
+        [
+          "2",
+          "7"
+        ],
+        [
+          "0",
+          "2"
+        ]
+      ],
+      "new_edges": [
+        [
+          "3",
+          "5"
+        ]
+      ]
+    },
+    {
+      "round": 5,
+      "repairs": [
+        [
+          "2",
+          "7"
+        ],
+        [
+          "2",
+          "6"
+        ]
+      ],
+      "new_edges": [
+        [
+          "1",
+          "6"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+2026-06-16 22:16:40,581 - __main__ - INFO - 实验开始 - 运行ID: 20260616_221640
+2026-06-16 22:16:40,581 - __main__ - INFO - 配置: rounds=10, nodes=8, network=watts_strogatz
+2026-06-16 22:16:40,584 - core.network_manager - INFO - 网络初始化完成：8个节点，8条边
+2026-06-16 22:16:40,585 - core.game_engine - INFO - 博弈引擎初始化完成: 8节点, 10轮
+2026-06-16 22:16:40,585 - core.game_engine - INFO - ==================================================
+2026-06-16 22:16:40,586 - core.game_engine - INFO - 开始攻防博弈实验
+2026-06-16 22:16:40,586 - core.game_engine - INFO - ==================================================
+2026-06-16 22:16:40,592 - core.game_engine - INFO - ----------------------------------------
+2026-06-16 22:16:40,592 - core.game_engine - INFO - 第 1 轮开始
+2026-06-16 22:16:40,593 - core.game_engine - INFO - >>> 攻击阶段
+2026-06-16 22:16:40,596 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:16:40,597 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:16:59,277 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:16:59,284 - core.game_engine - INFO -     攻击目标: [('0', '1'), ('2', '3')]
+2026-06-16 22:16:59,285 - core.game_engine - INFO - >>> 防御阶段
+2026-06-16 22:16:59,286 - core.game_engine - INFO -     修复链路: [('0', '1'), ('2', '3')]
+2026-06-16 22:16:59,287 - core.game_engine - INFO -     新增链路: [('0', '6')]
+2026-06-16 22:17:00,386 - core.game_engine - INFO -     当前链路数: 9
+2026-06-16 22:17:00,387 - core.game_engine - INFO -     最大连通分量: 8 节点
+2026-06-16 22:17:00,388 - core.game_engine - INFO - ----------------------------------------
+2026-06-16 22:17:00,388 - core.game_engine - INFO - 第 2 轮开始
+2026-06-16 22:17:00,389 - core.game_engine - INFO - >>> 攻击阶段
+2026-06-16 22:17:00,401 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:17:00,404 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:17:38,986 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:17:38,989 - core.game_engine - INFO -     攻击目标: [('6', '7'), ('5', '6')]
+2026-06-16 22:17:38,990 - core.game_engine - INFO - >>> 防御阶段
+2026-06-16 22:17:38,991 - core.game_engine - INFO -     修复链路: [('6', '7'), ('5', '6')]
+2026-06-16 22:17:38,992 - core.game_engine - INFO -     新增链路: [('1', '3')]
+2026-06-16 22:17:39,895 - core.game_engine - INFO -     当前链路数: 10
+2026-06-16 22:17:39,895 - core.game_engine - INFO -     最大连通分量: 8 节点
+2026-06-16 22:17:39,896 - core.game_engine - INFO - ----------------------------------------
+2026-06-16 22:17:39,897 - core.game_engine - INFO - 第 3 轮开始
+2026-06-16 22:17:39,898 - core.game_engine - INFO - >>> 攻击阶段
+2026-06-16 22:17:39,903 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:17:39,904 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:18:09,725 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:18:09,728 - core.game_engine - INFO -     攻击目标: [('0', '1'), ('0', '6')]
+2026-06-16 22:18:09,729 - core.game_engine - INFO - >>> 防御阶段
+2026-06-16 22:18:09,736 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:18:09,738 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:18:41,189 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:18:41,192 - core.game_engine - INFO -     修复链路: [('0', '1')]
+2026-06-16 22:18:41,192 - core.game_engine - INFO -     新增链路: [('0', '4')]
+2026-06-16 22:18:42,216 - core.game_engine - INFO -     当前链路数: 10
+2026-06-16 22:18:42,216 - core.game_engine - INFO -     最大连通分量: 8 节点
+2026-06-16 22:18:42,217 - core.game_engine - INFO - ----------------------------------------
+2026-06-16 22:18:42,218 - core.game_engine - INFO - 第 4 轮开始
+2026-06-16 22:18:42,218 - core.game_engine - INFO - >>> 攻击阶段
+2026-06-16 22:18:42,223 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:18:42,224 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:19:27,094 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:19:27,097 - core.game_engine - INFO -     攻击目标: [('0', '7'), ('2', '3')]
+2026-06-16 22:19:27,098 - core.game_engine - INFO - >>> 防御阶段
+2026-06-16 22:19:27,099 - core.game_engine - INFO -     修复链路: [('2', '3'), ('0', '7')]
+2026-06-16 22:19:27,100 - core.game_engine - INFO -     新增链路: [('3', '5')]
+2026-06-16 22:19:28,165 - core.game_engine - INFO -     当前链路数: 11
+2026-06-16 22:19:28,167 - core.game_engine - INFO -     最大连通分量: 8 节点
+2026-06-16 22:19:28,168 - core.game_engine - INFO - ----------------------------------------
+2026-06-16 22:19:28,169 - core.game_engine - INFO - 第 5 轮开始
+2026-06-16 22:19:28,170 - core.game_engine - INFO - >>> 攻击阶段
+2026-06-16 22:19:28,177 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:19:28,178 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:20:22,421 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:20:22,424 - core.game_engine - INFO -     攻击目标: [('5', '6'), ('0', '4')]
+2026-06-16 22:20:22,425 - core.game_engine - INFO - >>> 防御阶段
+2026-06-16 22:20:22,434 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:20:22,435 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:21:05,283 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:21:05,285 - core.game_engine - INFO -     修复链路: [('0', '4')]
+2026-06-16 22:21:05,286 - core.game_engine - INFO -     新增链路: [('1', '6')]
+2026-06-16 22:21:06,287 - core.game_engine - INFO -     当前链路数: 11
+2026-06-16 22:21:06,288 - core.game_engine - INFO -     最大连通分量: 8 节点
+2026-06-16 22:21:06,289 - core.game_engine - INFO - ----------------------------------------
+2026-06-16 22:21:06,290 - core.game_engine - INFO - 第 6 轮开始
+2026-06-16 22:21:06,291 - core.game_engine - INFO - >>> 攻击阶段
+2026-06-16 22:21:06,298 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:21:06,299 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:21:33,383 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:21:33,384 - core.game_engine - INFO -     攻击目标: [('4', '5'), ('3', '5')]
+2026-06-16 22:21:33,385 - core.game_engine - INFO - >>> 防御阶段
+2026-06-16 22:21:33,385 - core.game_engine - INFO -     修复链路: [('4', '5'), ('5', '6')]
+2026-06-16 22:21:33,386 - core.game_engine - INFO -     新增链路: [('4', '7')]
+2026-06-16 22:21:34,436 - core.game_engine - INFO -     当前链路数: 12
+2026-06-16 22:21:34,436 - core.game_engine - INFO -     最大连通分量: 8 节点
+2026-06-16 22:21:34,437 - core.game_engine - INFO - ----------------------------------------
+2026-06-16 22:21:34,438 - core.game_engine - INFO - 第 7 轮开始
+2026-06-16 22:21:34,439 - core.game_engine - INFO - >>> 攻击阶段
+2026-06-16 22:21:34,443 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:21:34,443 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:22:04,504 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:22:04,506 - core.game_engine - INFO -     攻击目标: [('1', '3'), ('0', '1')]
+2026-06-16 22:22:04,507 - core.game_engine - INFO - >>> 防御阶段
+2026-06-16 22:22:04,512 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:22:04,513 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:22:35,178 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:22:35,180 - core.game_engine - INFO -     修复链路: []
+2026-06-16 22:22:35,181 - core.game_engine - INFO -     新增链路: [('3', '5')]
+2026-06-16 22:22:36,109 - core.game_engine - INFO -     当前链路数: 11
+2026-06-16 22:22:36,110 - core.game_engine - INFO -     最大连通分量: 8 节点
+2026-06-16 22:22:36,110 - core.game_engine - INFO - ----------------------------------------
+2026-06-16 22:22:36,111 - core.game_engine - INFO - 第 8 轮开始
+2026-06-16 22:22:36,111 - core.game_engine - INFO - >>> 攻击阶段
+2026-06-16 22:22:36,117 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:22:36,118 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:23:08,207 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:23:08,209 - core.game_engine - INFO -     攻击目标: [('1', '6'), ('2', '3')]
+2026-06-16 22:23:08,210 - core.game_engine - INFO - >>> 防御阶段
+2026-06-16 22:23:08,211 - core.game_engine - INFO -     修复链路: [('0', '1'), ('2', '3')]
+2026-06-16 22:23:08,213 - core.game_engine - INFO -     新增链路: [('2', '6')]
+2026-06-16 22:23:09,147 - core.game_engine - INFO -     当前链路数: 12
+2026-06-16 22:23:09,148 - core.game_engine - INFO -     最大连通分量: 8 节点
+2026-06-16 22:23:09,158 - core.game_engine - INFO - ----------------------------------------
+2026-06-16 22:23:09,170 - core.game_engine - INFO - 第 9 轮开始
+2026-06-16 22:23:09,180 - core.game_engine - INFO - >>> 攻击阶段
+2026-06-16 22:23:09,206 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:23:09,214 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:23:38,842 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:23:38,844 - core.game_engine - INFO -     攻击目标: [('3', '5'), ('2', '3')]
+2026-06-16 22:23:38,845 - core.game_engine - INFO - >>> 防御阶段
+2026-06-16 22:23:38,851 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:23:38,852 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:24:10,242 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:24:10,265 - core.game_engine - INFO -     修复链路: [('3', '5'), ('2', '3')]
+2026-06-16 22:24:10,266 - core.game_engine - INFO -     新增链路: [('1', '2')]
+2026-06-16 22:24:11,244 - core.game_engine - INFO -     当前链路数: 13
+2026-06-16 22:24:11,245 - core.game_engine - INFO -     最大连通分量: 8 节点
+2026-06-16 22:24:11,246 - core.game_engine - INFO - ----------------------------------------
+2026-06-16 22:24:11,247 - core.game_engine - INFO - 第 10 轮开始
+2026-06-16 22:24:11,247 - core.game_engine - INFO - >>> 攻击阶段
+2026-06-16 22:24:11,258 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-06-16 22:24:11,260 - core.model_manager - INFO - 自动选择模型: ollama_local
+2026-06-16 22:24:38,169 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-16 22:24:38,184 - core.game_engine - INFO -     攻击目标: [('0', '7'), ('4', '5')]
+2026-06-16 22:24:38,186 - core.game_engine - INFO - >>> 防御阶段
+2026-06-16 22:24:38,188 - core.game_engine - INFO -     修复链路: [('4', '5'), ('0', '7')]
+2026-06-16 22:24:38,188 - core.game_engine - INFO -     新增链路: [('0', '5')]
+2026-06-16 22:24:39,153 - core.game_engine - INFO -     当前链路数: 14
+2026-06-16 22:24:39,154 - core.game_engine - INFO -     最大连通分量: 8 节点
+2026-06-16 22:24:39,154 - core.game_engine - INFO - ==================================================
+2026-06-16 22:24:39,155 - core.game_engine - INFO - >>> 防御方胜利！网络成功维持运行
+2026-06-16 22:24:39,155 - core.game_engine - INFO - ==================================================
+2026-06-16 22:24:39,160 - core.game_engine - INFO - 结果已保存: data/results/game_result_20260616_221640.json
+2026-06-16 22:24:40,251 - __main__ - INFO - 实验完成 - 胜负: Defender, 轮次: 10

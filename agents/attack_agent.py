@@ -53,7 +53,7 @@ class AttackerAgent(BaseGameAgent):
     
     def _get_role_description(self) -> str:
         """获取角色描述"""
-        return f"""你是网络攻击智能体，代号"黑翼"。
+        return f"""你是网络攻击智能体。
 
 你的目标是在有限的攻击次数内，最大化破坏网络的连通性和任务执行能力。
 

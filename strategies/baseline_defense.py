@@ -124,3 +124,19 @@ class BaselineDefender:
     def reset(self):
         """重置"""
         self.repaired_edges.clear()
+
+    # --- 适配 GameEngine 接口 ---
+    def decide_defense_actions(
+        self,
+        network_state: Dict[str, Any],
+        initial_edges: List[Tuple[str, str]],
+        **kwargs
+    ) -> Dict[str, List[Tuple[str, str]]]:
+        return self.select_actions(network_state, initial_edges)
+
+    def execute_defense(
+        self,
+        actions: Dict[str, List[Tuple[str, str]]],
+        network_manager
+    ) -> Dict[str, Any]:
+        return self.execute(actions, network_manager)

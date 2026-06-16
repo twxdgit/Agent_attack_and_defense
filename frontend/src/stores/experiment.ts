@@ -33,7 +33,11 @@ export const useExperimentStore = defineStore('experiment', () => {
     num_edges: [],
     largest_cc_ratio: [],
     robustness_index: [],
-    clustering_coeff: []
+    clustering_coeff: [],
+    avg_degree: [],
+    avg_path_length: [],
+    diameter: [],
+    degree_centralization: []
   })
   const currentMetrics = ref<any>(null)
 
@@ -208,6 +212,10 @@ export const useExperimentStore = defineStore('experiment', () => {
         metricsHistory.value.largest_cc_ratio.push(state.metrics.largest_cc_ratio)
         metricsHistory.value.robustness_index.push(state.metrics.robustness_index)
         metricsHistory.value.clustering_coeff.push(state.metrics.clustering_coeff)
+        metricsHistory.value.avg_degree.push(state.metrics.avg_degree ?? 0)
+        metricsHistory.value.avg_path_length.push(state.metrics.avg_path_length ?? 0)
+        metricsHistory.value.diameter.push(state.metrics.diameter ?? 0)
+        metricsHistory.value.degree_centralization.push(state.metrics.degree_centralization ?? 0)
       }
     }
 
@@ -250,7 +258,11 @@ export const useExperimentStore = defineStore('experiment', () => {
       num_edges: [],
       largest_cc_ratio: [],
       robustness_index: [],
-      clustering_coeff: []
+      clustering_coeff: [],
+      avg_degree: [],
+      avg_path_length: [],
+      diameter: [],
+      degree_centralization: []
     }
     currentMetrics.value = null
     logs.value = []

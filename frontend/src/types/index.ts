@@ -86,6 +86,9 @@ export interface MetricsData {
   robustness_index: number
   clustering_coeff: number
   avg_path_length: number
+  avg_degree: number
+  diameter: number
+  degree_centralization: number
 }
 
 // 博弈状态
@@ -107,6 +110,10 @@ export interface MetricsHistory {
   largest_cc_ratio: number[]
   robustness_index: number[]
   clustering_coeff: number[]
+  avg_degree: number[]
+  avg_path_length: number[]
+  diameter: number[]
+  degree_centralization: number[]
 }
 
 // 游戏日志

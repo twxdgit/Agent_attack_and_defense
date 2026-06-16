@@ -56,7 +56,7 @@ class DefenderAgent(BaseGameAgent):
     
     def _get_role_description(self) -> str:
         """获取角色描述"""
-        return f"""你是网络防御智能体，代号"铁壁"。
+        return f"""你是网络防御智能体。
 
 你的目标是维护网络的连通性和任务执行能力，在有限资源下最大化防御效果。
 

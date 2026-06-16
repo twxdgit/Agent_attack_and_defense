@@ -22,6 +22,10 @@
         <span class="legend-line" style="background: #722ed1;"></span>
         <span>新增链路</span>
       </div>
+      <div class="legend-item">
+        <span class="legend-line" style="background: #faad14; border-style: dashed;"></span>
+        <span>未修复（虚线=已删除）</span>
+      </div>
     </div>
   </div>
 </template>

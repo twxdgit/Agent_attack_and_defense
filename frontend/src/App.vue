@@ -27,7 +27,10 @@
 
     <!-- 底部：指标图表 -->
     <div class="bottom-section">
-      <MetricsChart class="metrics-section" />
+      <div class="metrics-row">
+        <MetricsChart class="metrics-section" />
+        <BasicMetricsChart class="metrics-section" />
+      </div>
     </div>
 
     <!-- 日志面板 -->
@@ -43,6 +46,7 @@ import NetworkGraph from '@/components/NetworkGraph.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import AgentStatus from '@/components/AgentStatus.vue'
 import MetricsChart from '@/components/MetricsChart.vue'
+import BasicMetricsChart from '@/components/BasicMetricsChart.vue'
 import GameLog from '@/components/GameLog.vue'
 
 const store = useExperimentStore()
@@ -119,6 +123,12 @@ const statusClass = computed(() => {
 
 .bottom-section {
   padding: 0 16px 16px;
+}
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 .metrics-section {

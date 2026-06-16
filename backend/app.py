@@ -89,7 +89,11 @@ def create_experiment():
                 "num_edges": [],
                 "largest_cc_ratio": [],
                 "robustness_index": [],
-                "clustering_coeff": []
+                "clustering_coeff": [],
+                "avg_degree": [],
+                "avg_path_length": [],
+                "diameter": [],
+                "degree_centralization": []
             },
             "logs": [],
             "edge_status_history": []  # 每轮链路状态: [{round, attacked, repaired, new_edges}, ...]
@@ -306,25 +310,28 @@ def get_state(exp_id):
     task_nodes_state = get_task_nodes_state(engine)
 
     return jsonify({
-        "round": exp["current_round"],
-        "max_rounds": exp["config"]["rounds"],
-        "status": exp["status"],
-        "winner": exp["winner"],
-        "network": {"nodes": nodes, "edges": edges},
-        "agents": {
-            "attacker": attacker_state,
-            "defender": defender_state,
-            "task_nodes": task_nodes_state
-        },
-        "metrics": {
-            "num_edges": metrics.get("num_edges", 0),
-            "largest_cc_ratio": metrics.get("largest_cc_ratio", 0),
-            "robustness_index": metrics.get("robustness_index", 0),
-            "clustering_coeff": metrics.get("clustering_coeff", 0),
-            "avg_path_length": metrics.get("avg_path_length", 0)
-        },
-        "logs": exp.get("logs", [])
-    })
+            "round": exp["current_round"],
+            "max_rounds": exp["config"]["rounds"],
+            "status": exp["status"],
+            "winner": exp["winner"],
+            "network": {"nodes": nodes, "edges": edges},
+            "agents": {
+                "attacker": attacker_state,
+                "defender": defender_state,
+                "task_nodes": task_nodes_state
+            },
+            "metrics": {
+                "num_edges": metrics.get("num_edges", 0),
+                "largest_cc_ratio": metrics.get("largest_cc_ratio", 0),
+                "robustness_index": metrics.get("robustness_index", 0),
+                "clustering_coeff": metrics.get("clustering_coeff", 0),
+                "avg_path_length": metrics.get("avg_path_length", 0),
+                "avg_degree": metrics.get("avg_degree", 0),
+                "diameter": metrics.get("diameter", 0),
+                "degree_centralization": metrics.get("degree_centralization", 0)
+            },
+            "logs": exp.get("logs", [])
+        })
 
 
 @app.route('/api/experiments/<exp_id>/network', methods=['GET'])
@@ -579,6 +586,10 @@ def update_metrics_history(exp_id: str, round_num: int, metrics: Dict):
             history["largest_cc_ratio"].append(metrics.get("largest_cc_ratio", 0))
             history["robustness_index"].append(metrics.get("robustness_index", 0))
             history["clustering_coeff"].append(metrics.get("clustering_coeff", 0))
+            history["avg_degree"].append(metrics.get("avg_degree", 0))
+            history["avg_path_length"].append(metrics.get("avg_path_length", 0))
+            history["diameter"].append(metrics.get("diameter", 0))
+            history["degree_centralization"].append(metrics.get("degree_centralization", 0))
 
 
 def run_game_loop(exp_id: str):

@@ -109,3 +109,18 @@ class DegreeAttacker:
         
         logger.info(f"度数攻击完成: {len(results['attacked_edges'])}条链路")
         return results
+
+    # --- 适配 GameEngine 接口 ---
+    def decide_attack_targets(
+        self,
+        network_state: Dict[str, Any],
+        **kwargs
+    ) -> List[Tuple[str, str]]:
+        return self.select_targets(network_state, **kwargs)
+
+    def execute_attack(
+        self,
+        targets: List[Tuple[str, str]],
+        network_manager
+    ) -> Dict[str, Any]:
+        return self.execute(targets, network_manager)

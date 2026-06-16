@@ -19,10 +19,7 @@ import { useExperimentStore } from '@/stores/experiment'
 
 const store = useExperimentStore()
 
-const winnerText = computed(() => {
-  if (!store.winner) return ''
-  return store.winner === 'attacker' ? '攻击方获胜' : '防御方获胜'
-})
+
 
 const winnerClass = computed(() => {
   if (!store.winner) return ''
